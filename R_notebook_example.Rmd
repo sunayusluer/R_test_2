@@ -1,0 +1,33 @@
+---
+title: "R_notebook_example"
+author: "Sunay Usluer"
+date: "2023-11-24"
+output: html_document
+---
+
+```{r, first_chunk, include=TRUE, echo=FALSE, message=FALSE, warning=TRUE,}
+library(tidyverse)
+library(rmarkdown)
+library(kableExtra)
+library(ggpubr)
+
+```
+
+```{r,include=TRUE, echo=FALSE, message=FALSE, warning=TRUE,}
+pop_data<- read_csv("./data/gapminder_data.csv")
+euro_data_tbl<- pop_data %>% filter(continent=="Europe" & year==2007) %>% select(-continent, -year) %>% arrange(desc(lifeExp)) %>% rename(Country=country, "Population Size"=pop, "Life Expectancy"=lifeExp, "GDP"=gdpPercap)
+euro_data_tbl %>% kbl() %>% kable_styling(bootstrap_options =c("striped", "hoover") )
+```
+
+
+```{r,include=TRUE, echo=FALSE, message=FALSE, warning=TRUE,}
+euro_data_tbl %>% paged_table()
+```
+
+
+```{r,include=TRUE, echo=FALSE, message=FALSE, warning=TRUE,}
+library(ggplot2)
+
+pop_data%>% ggplot(aes(x=continent, y=log(pop,10)))+geom_violin()
+```
+

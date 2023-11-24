@@ -1,0 +1,12 @@
+---
+title: "my_first_rmd"
+author: "Sunay Usluer"
+date: "2023-11-24"
+output: html_document
+---
+# Heading 1
+## Heading 2
+This is a **bold** and *italic* text, which is A ^superscript^ and A ~subscript~.
+
+Though, this is a ~~mistake~~ cause it is a `backticks`
+link this text to the header [link to header](#markdown_header)
